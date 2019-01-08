@@ -7,10 +7,13 @@
   </head>
   <body>
     <h1>Your Webcam!</h1>
-    <button class="record-button">click me</button>
-    <video></video>
+    <div class="container">
+      <button class="record-button">pause webcam</button>
+      <audio></audio>
+      <video autoplay></video>
+      <canvas width=640 height=400></canvas>
+    </div>
     <script>
-      // You can also require other files to run in this process
       require('./renderer.js')
     </script>
   </body>

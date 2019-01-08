@@ -9,13 +9,21 @@ h1 {
   text-align: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .record-button {
   font-size: 1.5rem;
   background-color: transparent;
   border-radius: 5px;
   border: 1px solid #fff;
+  margin-bottom: 30px;
   padding: 15px 20px;
-  width: 150px;
+  width: 200px;
   color: #fff;
   cursor: pointer;
   outline: none;
