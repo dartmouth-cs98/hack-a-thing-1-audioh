@@ -1,12 +1,24 @@
-@font-face {
-  font-family: 'Avenir';
-  src: url('./assets/fonts/Avenir-Medium.tff');
-}
-
 body {
   font-family: 'Avenir', 'sans-serif';
+  text-align: center;
   background-color: rgb(0, 15, 24);
   color: #fff;
+}
+
+h1 {
+  text-align: center;
+}
+
+.record-button {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  padding: 15px 20px;
+  width: 150px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
 }
 
 .record-card {
@@ -14,6 +26,7 @@ body {
   width: 90vw;
   background-color: #fff;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 .record-card-title {

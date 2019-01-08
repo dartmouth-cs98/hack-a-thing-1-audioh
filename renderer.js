@@ -1,5 +1,3 @@
-const p5 = require('p5');
-
 const recordButton = document.getElementsByClassName('record-button')[0];
 recordButton.addEventListener('click', e => {
   createRecordCard('The quick fox jumped over the log');
@@ -16,13 +14,3 @@ const createRecordCard = (title) => {
   recordTime.innerText = '0:00';
   document.body.appendChild(record)
 }
-
-let mic;
-
-const setup = () => {
-  mic = new p5.AudioIn()
-  mic.start();
-  console.log('fdasfdsfs');
-}
-
-setup();
