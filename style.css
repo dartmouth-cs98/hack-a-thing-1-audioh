@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Avenir';
+  src: url('./assets/fonts/Avenir-Medium.tff');
+}
+
+body {
+  font-family: 'Avenir', 'sans-serif';
+  background-color: rgb(0, 15, 24);
+  color: #fff;
+}
+
+.record-card {
+  height: 150px;
+  width: 90vw;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.record-card-title {
+  padding: 10px 20px;
+  color: rgb(39, 39, 39);
+}
+
+.record-card-time {
+  color: rgb(39, 39, 39);
+}
