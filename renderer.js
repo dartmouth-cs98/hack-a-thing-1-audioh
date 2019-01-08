@@ -1,16 +1,22 @@
+const video = document.getElementsByTagName('video')[0];
 const recordButton = document.getElementsByClassName('record-button')[0];
 recordButton.addEventListener('click', e => {
-  createRecordCard('The quick fox jumped over the log');
-})
-
-const createRecordCard = (title) => {
-  const record = document.createElement('div');
-  record.classList.add('record-card');
-  const recordTitle = record.appendChild(document.createElement('h1'));
-  recordTitle.classList.add('record-card-title');
-  recordTitle.innerText = title;
-  const recordTime = record.appendChild(document.createElement('h3'));
-  recordTime.classList.add('record-card-time');
-  recordTime.innerText = '0:00';
-  document.body.appendChild(record)
+  video.play();
 }
+
+(function () {
+    navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+
+    navigator.getMedia(
+        // constraints
+        {video:true, audio:false},
+
+        // success callback
+        function (mediaStream) {
+            video.src = window.URL.createObjectURL(mediaStream);
+        },   
+        //handle error
+        function (error) {
+            console.log(error);
+        })   
+})();
