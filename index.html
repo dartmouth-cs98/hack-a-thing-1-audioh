@@ -1,21 +1,109 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Quick Webcam</title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>IO Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <style>
+          body {
+            margin-top: 10vh;
+          }
+
+          #messageArea {
+            display: none;
+          }
+          </style>
   </head>
   <body>
-    <h1>Your Webcam!</h1>
     <div class="container">
-      <button class="record-button">snap photo</button>
-      <audio></audio>
-      <video autoplay></video>
-      <h1>Your Snapshot</h1>
-      <canvas width=640 height=400></canvas>
+      <div id="userFormArea" class="row">
+        <div class="col-md-12">
+          <form id="userForm">
+            <div class="form-group">
+              <label>Enter Username</label>
+              <input class="form-control" id="username" />
+              <br />
+              <input id="username-submit-button" type="submit" class="btn btn-primary" value="Login" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="messageArea" class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <h3>Online Users</h3>
+            <ul class="list-group" id="users"></ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="chat" id="chat"></div>
+
+          <form id="messageForm">
+            <div class="form-group">
+              <label>Enter Message</label>
+              <textarea class="form-control" id="message"></textarea>
+              <br />
+              <input id="submit-button" type="submit" class="btn btn-primary" value="Send Message" />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+
     <script>
-      require('./renderer.js')
+
+      let socket = io.connect();
+      let messageForm = document.getElementById('messageForm');
+      let message = document.getElementById('message');
+      let chat = document.getElementById('chat');
+      let messageArea = document.getElementById('messageArea');
+      let userFormArea = document.getElementById('userFormArea');
+      let userForm = document.getElementById('userFormArea');
+      let users = document.getElementById('users');
+      let username = document.getElementById('username');
+      let usernameSubmitButton = document.getElementById('username-submit-button');
+      let submitButton = document.getElementById('submit-button');
+
+      submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (message.value.trim().length > 0) {
+          socket.emit('send message', { username: username.value, message: message.value} );
+          message.value = '';
+        }
+      })
+
+      usernameSubmitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (username.value.trim().length > 0) {
+          socket.emit('new user', username.value.trim(), (data) => {
+            if (data) {
+              userFormArea.style.display = 'none';
+              messageArea.style.display = 'block';
+            }
+          })
+        }
+      })
+
+      socket.on('new message', (data) => {
+        const childDiv = document.createElement('div');
+        childDiv.classList.add('well');
+        childDiv.innerText = `${data.user}: ${data.msg}`;
+        chat.appendChild(childDiv);
+      })
+
+      socket.on('get users', (data) => {
+        let html;
+        data.forEach((d) => {
+          const option = document.createElement('li');
+          option.classList.add('list-group-item');
+          option.innerText = d;
+          users.appendChild(option);
+        })
+      })
+
     </script>
   </body>
 </html>
