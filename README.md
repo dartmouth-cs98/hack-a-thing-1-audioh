@@ -1,8 +1,8 @@
-# Audioh🔊
-A small electron app that plays around with your webcam and snapshots
+# Audioh 🔊
+A small socketIO application for chat
 
 ## Motivation 🏃🏾‍♀️
-I have little prior experience in working with cameras, image analysis, or even audio. So I decided to play around with the computer's webcam to see what Javascript's Media API had to offer.
+I originally wanted to make an electron application, but then I realized that it's just a website on desktop. So I decided to look into socket.io
 
-## Technology 💻
-* Electron - framework to build desktop applications with HTML, CSS, and Javascript
+## Technology
+* SocketIO - TCP connections package
