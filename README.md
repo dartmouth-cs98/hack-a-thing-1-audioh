@@ -1,5 +1,5 @@
 # Audioh 🔊
-A small socketIO application for chat
+A small socketIO application for chat and an Electron app to interact with your webcam!
 
 ## Motivation 🏃🏾‍♀️
 I originally wanted to make an Electron application that would record audio and analyze the source for any material. However, I ran into a lot of issues with that approach. So decided to move forward with interacting with the laptop's webcam. I was able to do that, and I started to play around with different frame rates and taking snapshots.
