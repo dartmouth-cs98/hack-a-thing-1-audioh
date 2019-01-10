@@ -1,4 +1,6 @@
 let express = require('express');
+let path = require('path');
+let fs = require('fs');
 let app = express();
 let server = require('http').createServer(app);
 let io = require('socket.io').listen(server);
@@ -15,6 +17,24 @@ app.get('/', function(req, res) {
 io.sockets.on('connection', function(socket) {
   connections.push(socket);
   console.log(`Connected: ${connections.length} sockets connected`);
+
+  let readStream = fs.createReadStream(path.resolve(__dirname, './assets/images/woodchuck.png'), {
+    encoding: 'binary'
+  }), chunks = [];
+
+  readStream.on('readable', () => {
+    console.log('Image loading');
+    console.log(readStream)
+  })
+
+  readStream.on('data', (chunk) => {
+    chunks.push(chunk);
+    io.sockets.emit('img-chunk', chunk);
+  })
+
+  readStream.on('end', () => {
+    console.log('Image loaded');
+  })
 
   // Disconnect
   socket.on('disconnect', function(data) {

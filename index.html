@@ -19,6 +19,7 @@
   </head>
   <body>
     <div class="container">
+      <img id="img-stream2" src="" />
       <div id="userFormArea" class="row">
         <div class="col-md-12">
           <form id="userForm">
@@ -67,6 +68,8 @@
       let usernameSubmitButton = document.getElementById('username-submit-button');
       let submitButton = document.getElementById('submit-button');
 
+      let imgChunks = [];
+
       submitButton.addEventListener('click', (e) => {
         e.preventDefault();
         if (message.value.trim().length > 0) {
@@ -102,6 +105,13 @@
           option.innerText = d;
           users.appendChild(option);
         })
+      })
+
+      socket.on('img-chunk', (chunk) => {
+        let img = document.getElementById('img-stream2');
+        imgChunks.push(chunk);
+
+        img.setAttribute('src', 'data:image/jpeg;base64,' + window.btoa(imgChunks));
       })
 
     </script>
