@@ -10,6 +10,20 @@ I decided to expose SocketIO's major capabilities so I decided to make a chat se
 
 I wanted to include image and audio streaming between different users, so I started with images. However, at this moment, stream images among users doesn't currently work, but is something that I'm interested in completing outside of class.
 
+## Setup 🚀
+
+### Electron Webcam App
+* `git clone` this project
+* `cd hack-a-thing-1-audioh/electron`
+* `npm install`
+* `npm start`
+
+### SocketIO Chat App
+* You don't have to `git clone` the project twice
+* `cd hack-a-thing-1-audioh`
+* `npm install`
+* `npm start`
+
 ## Technology 💻
 * [Electron](https://electronjs.org) - Framework to build desktop applications
 * [SocketIO](https://socket.io/) - TCP connections package
