@@ -1,0 +1,29 @@
+{
+  "name": "audioh",
+  "version": "1.0.0",
+  "description": "electron app to record audio",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch * --exec \"electron .\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dartmouth-cs98/hack-a-thing-1-audioh.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "Ijemma Onwuzulike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dartmouth-cs98/hack-a-thing-1-audioh/issues"
+  },
+  "homepage": "https://github.com/dartmouth-cs98/hack-a-thing-1-audioh#readme",
+  "devDependencies": {
+    "electron": "^4.0.1",
+    "electron-reload": "^1.4.0",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {}
+}

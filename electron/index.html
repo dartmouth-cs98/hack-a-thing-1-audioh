@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quick Webcam</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <h1>Your Webcam!</h1>
+    <div class="container">
+      <button class="record-button">snap photo</button>
+      <audio></audio>
+      <video autoplay></video>
+      <h1>Your Snapshot</h1>
+      <canvas width=640 height=400></canvas>
+    </div>
+    <script>
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
